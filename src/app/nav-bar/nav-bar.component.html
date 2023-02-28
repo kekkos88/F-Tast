@@ -1,0 +1,34 @@
+
+<mat-nav-list role="navigation" class="mat-nav-list mat-list-base ng-tns-c137-110">
+  <div *ngIf="ok; else elseBlock">
+
+  <a mat-list-item=""  routerLink="/{{node.link | lowercase}}" routerLinkActive="docs-component-viewer-sidenav-item-selected" 
+
+  class="mat-list-item mat-focus-indicator ng-tns-c137-110 ng-star-inserted" 
+
+  aria-current="false" *ngFor="let node of links" (click)="checkLink(node.link)">
+
+
+ <!-- <ng-template  [ngIf]="node.flag">-->
+          <div class="mat-list-item-content">
+            <div mat-ripple="" class="mat-ripple mat-list-item-ripple">
+
+            </div>
+            <div class="mat-list-text">
+
+            </div><mat-icon >{{node.icon | lowercase}}</mat-icon> &nbsp;&nbsp;<div class="text">{{node.link}}</div>
+          </div>
+   <!-- </ng-template > -->
+  </a>
+</div>
+<ng-template #elseBlock><p>paziente non selezionato</p></ng-template>
+</mat-nav-list>
+
+
+<br>
+<br>
+<div class="col d-flex justify-content-center">
+  <button id="bottoneLogout" mat-button style="width: 150px;" color="primary" (click)="logOut()">Logout</button>
+</div>
+
+

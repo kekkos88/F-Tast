@@ -1,0 +1,119 @@
+<pre>
+
+</pre>
+
+
+      <mat-card>
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="row align-items-end" id="center">
+              <div class="col-9" id="center">
+                <mat-card-title>Modifica informazioni paziente: {{id_paziente}}</mat-card-title> 
+              </div>
+            </div>
+          <pre>
+            
+          </pre>
+         <!--- <div class="col" id="idPaziente">
+              <h3 style="color: rgba(8, 99, 189, 1); font-weight: bold;">{{id_paziente}}</h3>
+            </div>-->  
+            <div class="row"  style="align-items: flex-end;">
+             <!-- <div class="col-4">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                  [(ngModel)]="sessoInput">
+                  <mat-radio-button value="Maschio" class="maschio-radio-button">Maschio</mat-radio-button>
+                  <mat-radio-button value="Femmina" class="femmina-radio-button">Femmina</mat-radio-button>
+                </mat-radio-group>
+              </div>-->
+              <div class="col-3 text-center" style="margin-bottom:12px ;">
+                    <span class="text1">Sesso</span>
+                <div class="col">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-select matInput aria-label="Menopausa"[(ngModel)]="sessoInput" >
+                            <mat-option value="Maschio">Maschio</mat-option>
+                            <mat-option value="Femmina">Femmina</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            </div>
+            <pre></pre>
+            <pre></pre>
+            <div class="row">
+              <div class="col text-center" style="margin-bottom: 12px;">
+                <span class="text1">Patologie</span>
+              </div>
+            </div>
+            <div class="row">
+              <mat-form-field class="patologie-chip-list" appearance="fill">
+                <mat-label>Patologie</mat-label>
+                <mat-chip-list #chipListPatologie aria-label="patologie">
+                  <mat-chip *ngFor="let patologia of listPatologie" (removed)="removePatologia(patologia)">
+                    {{patologia}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="patologie" [matChipInputFor]="chipListPatologie"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodesPatologie" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addPatologia($event)">
+                </mat-chip-list>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col text-center" style="margin-bottom: 12px;">
+                <span class="text1">Intolleranze</span>
+            </div>
+            </div>
+            <div class="row">
+              <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label>Intolleranze</mat-label>
+                <mat-chip-list #chipListIntolleranze aria-label="intolleranze">
+                  <mat-chip *ngFor="let intolleranze of listIntolleranze" (removed)="removeIntolleranza(intolleranze)">
+                    {{intolleranze}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="intolleranze" [matChipInputFor]="chipListIntolleranze"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodesIntolleranze" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addIntolleranza($event)">
+                </mat-chip-list>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col text-center" style="margin-bottom: 12px;">
+                <span class="text1">Allergie</span>
+              </div>
+            </div>
+            <div class="row">
+              <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label>Allergie</mat-label>
+                <mat-chip-list #chipListAllergie aria-label="allergie">
+                  <mat-chip *ngFor="let allergie of listAllergie" (removed)="removeAllergia(allergie)">
+                    {{allergie}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="allergie" [matChipInputFor]="chipListAllergie"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodesAllergie" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addAllergia($event)">
+                </mat-chip-list>
+              </mat-form-field>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <div id="center" class="col">
+                <button id="buttonModificaPaziente" (click)="modificaInfoPaziente()" mat-button color="primary">Salva
+                  modifiche</button>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </mat-card>
+
+

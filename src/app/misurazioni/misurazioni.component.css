@@ -1,0 +1,52 @@
+
+
+.mat-card{
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: rgba(121, 121, 121, 0.09) 0px 12px 12px, rgba(119, 119, 119, 0.09) 0px -12px 30px, rgba(121, 121, 121, 0.06) 0px 4px 6px, rgba(119, 119, 119, 0.06) 0px 12px 13px, rgba(121, 121, 121, 0.06) 0px -3px 5px;
+}
+
+button{
+  color: rgb(238, 238, 238);
+  background: linear-gradient(272.69deg, #00D1FF -59.92%, #00B83E 86.39%);
+  border-radius: 30px;
+}
+
+button:disabled{
+ 
+  background:#797575;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+h1, h2{
+  text-align: center;
+  }
+  
+h4{
+  text-align: center;
+  margin: 0 0 0 0 ;
+}
+
+.label{
+  word-break: break-all;
+}
+
+.mat-card-title{
+  font-weight: bold;
+  font-size: 20px;
+  position: center;
+}
+
+.text4{
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+ 
+}

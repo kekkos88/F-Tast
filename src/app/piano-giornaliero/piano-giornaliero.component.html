@@ -1,0 +1,13 @@
+<pre>
+
+</pre>
+
+<div class="pasto" *ngFor="let pasto of pasti">
+  <app-pasto [pasto]="pasto"></app-pasto>
+</div>
+
+  <div class="row ">
+      <div class="col d-flex justify-content-center">
+        <button mat-raised-button (click)="inviaPianoGiornaliero()"> Salva piano giornaliero <mat-icon>save</mat-icon> </button>
+    </div>
+  </div>

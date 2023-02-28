@@ -1,0 +1,77 @@
+
+      
+        <div class="container" style ="max-width: 650px;">
+          <div class="row justify-content-center">
+            <div class="col-12 d-flex justify-content-center" style="align-items: center;">
+              <h2 style="font-weight: bold;">Info paziente</h2>
+            </div>
+            <!--mascio femmina-->
+            <pre></pre>
+          
+
+            <div class="row">
+              <div class="col">
+                <h3 style="font-weight: bold">Patologie</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="mat-card-read" appearance="fill">
+                <mat-label>Patologie</mat-label>
+                <mat-chip-list #chipListPatologie aria-label="patologie">
+
+                  <mat-chip *ngFor="let patologia of listPatologie" >
+                    {{patologia}}
+                  </mat-chip>
+              
+                </mat-chip-list>
+              </div>
+            </div>
+
+            <div class="row">
+              <h3 style="font-weight: bold">Intolleranze</h3>
+            </div>
+
+            <div class="row">
+              <div class="mat-card-read" appearance="fill">
+                <mat-label>Intolleranze</mat-label>
+
+                <mat-chip-list #chipListIntolleranze aria-label="intolleranze">
+                  <mat-chip *ngFor="let intolleranze of listIntolleranze">
+                    {{intolleranze}}
+                  </mat-chip>
+
+                </mat-chip-list>
+              </div>
+            </div>
+
+            <div class="row">
+              <h3 style="font-weight: bold">Allergie</h3>
+            </div>
+
+            <div class="row">
+              <div class="mat-card-read"  appearance="fill">
+                <mat-label>Allergie</mat-label>
+                <mat-chip-list #chipListAllergie aria-label="allergie">
+
+                  <mat-chip *ngFor="let allergie of listAllergie">
+                    {{allergie}}
+                  </mat-chip>
+
+                </mat-chip-list>
+              </div>
+            </div>
+<pre></pre>
+ 
+            <div class="row">
+              <div id="center" class="col">
+                <button id="esci" (click)="esci()" mat-button color="primary">Chiudi</button>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+    
+
+
+

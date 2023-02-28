@@ -1,0 +1,64 @@
+#nome_utente{
+  color: rgba(8, 99, 189, 1);
+}
+.row{
+  max-width: 400px;
+  min-width: 300px;
+}
+
+.col{
+  max-width: 100%;
+}
+
+#aggiungi_intolleranze{
+  /*color: darkred;*/
+  border-radius: 30px;
+ /* border-color: darkred;*/
+  border-style: solid;
+  border-width: 2px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: rgba(8, 99, 189, 1);
+}
+
+.mat-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: max-content;
+  padding: 25px;
+  box-shadow: rgba(121, 121, 121, 0.09) 0px 12px 12px, rgba(119, 119, 119, 0.09) 0px -12px 30px, rgba(121, 121, 121, 0.06) 0px 4px 6px, rgba(119, 119, 119, 0.06) 0px 12px 13px, rgba(121, 121, 121, 0.06) 0px -3px 5px;
+}
+
+::ng-deep .mat-tab-label {
+  min-width: auto !important;
+  padding: auto;
+}
+
+::ng-deep .mat-tab-label{
+padding: 0 2vmax 0 2vmax  !important;
+}
+
+#bottoneInfoPaziente{
+margin-left: 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  color: rgba(8, 99, 189, 1);
+  border-color: rgba(8, 99, 189, 1);
+  display: flex;
+  background:white;
+}
+
+.mat-card-title{
+  font-weight: bold;
+  font-size: 20px;
+  position: center
+}
+
+
+::ng-deep .mat-form-field-infix {
+  width: auto !important;
+}

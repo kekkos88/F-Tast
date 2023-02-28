@@ -1,0 +1,93 @@
+<pre></pre>
+<div class="container">
+    <div class="container text-center">
+      <div class="row justify-content-md-center">
+  
+        <div class="col-md-auto ">
+          <div class="row-12"><h4>Peso </h4></div>  
+          <div class="row-12"><p class="a">{{misurazione.peso}}</p></div>
+        </div>
+        <div class="col-md-auto">
+          <div class="row-12"><h4>Età</h4></div>
+          <div class="row-12"><p class="a"> {{misurazione.eta}}</p></div>
+        </div>
+        <div class="col-md-auto">
+          <div class="col-12"> <h4>Menopausa</h4></div>
+          <div class="col-12"> <p class="a">{{menopausa}}</p></div>  
+        </div>
+
+ <!-- i seguenti campi non sono restituiti dl back-end
+       <div class="col-md-auto" >
+          <div class="row-12"><h4> Massa grassa %</h4></div>
+          <div class="row-12"> <p class="a">{{misurazione}}</p></div>
+        </div>
+
+        <div class="col-md-auto">
+          <div class="row-12"><h4>  Massa magra %</h4></div>
+          <div class="row-12"><p class="a">{{misurazione}}</p></div>
+        </div>
+
+        <div class="col-md-auto">
+          <div class="row-12"><h4> Idratazione %</h4></div>
+          <div class="row-12"><p class="a">{{misurazione}}</p></div>
+        </div>
+-->
+        <div class="col-md-auto">
+          <div class="row-12"><h4>Altezza (Cm)</h4></div>
+          <div class="row-12"><p class="a"> {{misurazione.altezza}}</p></div>
+        </div>
+        <div class="col-md-auto">
+          <div class="row-12"><h4>Bmi</h4></div>
+          <div class="row-12"> <p class="a">{{misurazione.bmi}}</p></div>
+        </div>
+        
+
+      <div class="col-md-auto ">
+        <div class="row-12"><h4>Diametro vita (Cm)</h4></div>  
+        <div class="row-12"><p class="a">{{misurazione.vita}}</p></div>
+      </div>
+
+      <div class="col-md-auto">
+        <div class="col-12"><h4>Diametro fianchi (Cm)</h4></div>
+        <div class="col-12"> <p class="a">{{misurazione.fianchi}} </p></div>  
+      </div>
+      <div class="col-md-auto">
+        <div class="row-12"><h4>Coleterolo DHL</h4> </div>
+        <div class="row-12"><p class="a"> {{ misurazione.colesterolo_DHL }}</p></div>
+      </div>
+
+      <div class="col-md-auto">
+        <div class="row-12"><h4>Trigliceridi (mg/dl)</h4></div>
+        <div class="row-12"> <p class="a">{{ misurazione.trigliceridi}}</p></div>
+      </div>
+
+      <div class="col-md-auto">
+        <div class="row-12"><h4>Glucosio (mg/dl)</h4></div>
+        <div class="row-12"><p class="a">{{ misurazione.glucosio}}</p> </div>
+      </div>
+
+      <div class="col-md-auto">
+        <div class="row-12"><h4>Pressione in sistole (mm/Hg)</h4></div>
+        <div class="row-12"> <p class="a">{{misurazione.pressione_sistole}}</p></div>
+      </div>
+      <div class="col-md-auto">
+        <div class="row-12"><h4>Pressione in diastole  (mm/Hg)</h4></div>
+        <div class="row-12"><p class="a"> {{misurazione.pressione_diastole}}</p></div>
+      </div>
+
+
+  </div>
+    
+<pre>
+
+</pre>
+    <div class="row">
+        <div class="container">
+          
+      <canvas id="{{nomeChart}}" height="90%" > 
+        </canvas>
+        </div>
+    </div>
+
+  </div>
+</div>

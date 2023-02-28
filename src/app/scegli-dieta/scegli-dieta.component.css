@@ -1,0 +1,14 @@
+.col{
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    text-decoration: underline;
+}
+
+button{
+    color: rgb(238, 238, 238);
+    background: linear-gradient(272.69deg, #00D1FF -59.92%, #00B83E 86.39%);
+    border-radius: 30px;
+}

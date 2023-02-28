@@ -1,0 +1,37 @@
+<pre></pre>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-card-title>Misurazione Paziente: {{paziente?.dettagli?.id_paziente}}</mat-card-title> 
+      </div>
+    </div>
+  <br>
+    <br>
+                      <mat-tab-group  mat-align-tabs="center" [selectedIndex]="misurazioneSelezionata" ScrollDirection= 'after' mat-align-tabs="center">
+                          <mat-tab *ngFor="let misurazioneGiorno of data.ListaMisurazioni" label="{{misurazioneGiorno.data_misurazione}}" >
+                            <ng-template matTabContent>
+                              <app-visualizza-visita-paziente-info [data]="data" [misurazione]="misurazioneGiorno" ></app-visualizza-visita-paziente-info>
+                            </ng-template>
+                          </mat-tab>
+                      </mat-tab-group>
+                             
+    <br>
+      <div class="row align-items-end text-center">
+        
+        <div class="col-3">
+          <span> Probabilità riscontro diabete: </span> <span style="font-weight: bold;" > {{res_rete_neurale}} </span> <span>%</span>
+        </div>
+
+        <div class="col-3">
+          <button mat-raised-button [disabled]="disabilitaPulsanteRete" (click)="chiamaReteNeurale()" >Rete neurale <mat-icon>psychology</mat-icon></button>
+        </div>
+
+        <div class="col-3">
+          <button mat-button (click)="onClickOk()" cdkFocusInitial>Chiudi</button>
+        </div>
+    
+      </div>
+  </div>
+    <br>
+  
+  

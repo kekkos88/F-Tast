@@ -1,0 +1,45 @@
+<br>
+<div class="container-fluid">
+    <div class="row ">
+      <div class="col d-flex justify-content-center">
+        <mat-card-title>Effettua l'accesso con le tue credenziali</mat-card-title>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <pre></pre>
+        <div class="mat-card" style="width: 40rem;">
+          <div class="card-body" >
+            <div class="form">
+              <mat-form-field appearance="fill">
+                <mat-label>Inserisci la tua mail</mat-label>
+                <input type="email" [(ngModel)]="emailTextInput" matInput placeholder="utente@esempio.com" [formMethod]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form">
+              <mat-form-field appearance="fill">
+                <mat-label>Inserisci la tua password</mat-label>
+                <input type="password" [(ngModel)]="passwordTextInput" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <br>
+            <!--
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label style="font-weight: bold;" class="form-check-label" for="gridCheck">Ricordami</label>
+            </div>-->
+            <div class="row" style="padding-bottom: 0px;">
+              <div class="col d-flex justify-content-center ">
+                <button id="bottoneLogin" (click)="login()" mat-button style="width: 150px;" color="primary">Login</button>
+              </div>
+            </div>
+            <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

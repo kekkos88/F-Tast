@@ -1,0 +1,76 @@
+<pre>
+
+</pre>
+<mat-card>
+<div class="container">
+          <form [formGroup]="registrazioneForm" (ngSubmit)="callingFunction()">
+                <div class="row">
+                    <div class="col">
+                        <mat-card-title>Registra paziente</mat-card-title>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+                        <mat-form-field appearance="fill"  class="example-full-width">
+                            <mat-label>Inserisci email paziente</mat-label>
+                            <input matInput placeholder="paziente@esempio.it" formControlName="email" class="example-full-width">
+                            <mat-error *ngIf="emailControl?.invalid">{{getErrorMessageEmail()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12" >
+                        <mat-form-field appearance="fill" class="example-full-width" >
+                            <mat-label>Inserisci password paziente</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Es. Kzpl1%bfc" formControlName="passwordControl" class="example-full-width">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="passwordControl?.invalid">{{getErrorMessagePassword()}}</mat-error>
+                        </mat-form-field>
+                </div>
+                </div>
+                <pre>
+
+                </pre>
+                <div class="row">
+                      <div class="col-4 col-sm-4 text-center">
+                        <span class="text1">Sesso</span>
+                    <div class="col">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-select matInput aria-label="Menopausa" formControlName="sesso" >
+                                <mat-option value="Maschio">Maschio</mat-option>
+                                <mat-option value="Femmina">Femmina</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                </div>
+
+                <pre>
+
+                </pre>
+                <div class="row">
+                <div class="col-12 col-sm-3">
+                    <mat-form-field  class="example-full-width">
+                        <mat-label>Seleziona una data di nascita</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dataDiNascita">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    <div><p style="color: grey;">Sarà inviata una mail all'indirizzo di posta specificato contentente delle credenziali <br> temporanee per poter accedere alla piattaforma</p></div>
+                    <div><p style="color: grey; text-decoration: underline;">Controllare la casella di posta indesiderata!</p></div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit"  id="registrazionePazionePaziente" (click)="registraPaziente()" mat-raised-button [disabled]="registrazioneForm.invalid">Registra paziente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </form>  
+</div>
+</mat-card>

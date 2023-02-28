@@ -1,0 +1,25 @@
+<pre>
+
+</pre>
+<mat-card>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <mat-card-title>Aggiungi Paziente</mat-card-title>
+      </div>
+    </div>
+    <form  [formGroup]="aggiungiPazienteForm" (ngSubmit)="callingFunction()"  >
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Inserisci Codice Paziente</mat-label>
+              <input formControlName="id_paziente" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-12 text-center ">
+            <button mat-raised-button [disabled]="!aggiungiPazienteForm.dirty" >Aggiungi</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</mat-card>

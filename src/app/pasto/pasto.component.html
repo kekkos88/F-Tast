@@ -1,0 +1,91 @@
+<div id="nome_pasto">
+  <h1>{{pasto.nome}}</h1>
+</div>
+<form [formGroup]="inserisciPasto">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-6 "> <span class="text2">Nome alimento</span>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Alimento</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto"
+            formControlName="nomeAlimento">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-3 col-sm-3" ms-auto><span class="text2">Quantità</span>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Quantità</mat-label>
+          <input (keydown)="_keyUp($event)" formControlName="quantitaAlimento" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-3 col-sm-3"><span class="text2">Unità di misura</span>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>unità di misura</mat-label>
+          <mat-select formControlName="unitaDiMisura">
+            <mat-option *ngFor="let unita of unitaDiMisura" [value]="unita">
+              {{unita}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Note:</mat-label>
+        <textarea matInput formControlName="note" #message maxlength="200" placeholder="Note della dieta"
+          value={{pasto.note[0]}}></textarea>
+        <mat-hint align="end">{{message.value.length}} / 200</mat-hint>
+      </mat-form-field>
+    </div>
+    
+    <div class="row">
+      <div class="container">
+        <div class="col-12" *ngFor="let alimento of pasto.listaAlimenti">
+         
+          <mat-card>
+            <label>Alimento: {{alimento.nome_alimento}}</label><br>
+            <label>Quantità: {{alimento.quantita}} {{alimento.unita_misura}} </label><br>
+            <button mat-icon-button (click)="rimuoviAlimento(alimento)"
+              aria-label="Example icon button with a open in new tab icon">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+          </mat-card>
+        </div>
+    </div>
+    </div>
+
+       <div class="row">
+        <div class="col-12">
+        <mat-card>
+          Note: <br>
+          <div class="col" *ngIf="pasto.note[0] !== ''; else elseBlock">
+            <label>{{pasto.note[0]}}</label>
+          </div>
+          <ng-template #elseBlock>
+            <label> non ci sono note </label>
+          </ng-template>
+        </mat-card>
+      </div>
+     </div>
+    
+    <br>
+    <div class="row ">
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-raised-button id="buttonDieta" (click)="costruisciPasto()">Aggiungi alimento <mat-icon>add_circle</mat-icon> </button>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-raised-button id="buttonDieta" (click)="copiaPasto()">Copia pasto <mat-icon>content_copy</mat-icon> </button>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-raised-button id="buttonDieta" (click)="incollaPasto()">Incolla pasto <mat-icon>content_paste</mat-icon> </button>
+      </div>
+    </div>
+    <br>
+  </div>
+</form>
+<br>

@@ -1,0 +1,66 @@
+#sfondoPrimaRiga{
+  background-color:rgba(8, 99, 189, 1);
+  font-weight: bold;
+  color: white;
+}
+
+#patologie{
+  display: flex;
+  justify-content: center;
+}
+
+
+h3{
+  display: flex;
+  justify-content: center;
+}
+
+
+#buttonModificaPaziente{
+
+  border-radius: 30px;
+
+  border-style: solid;
+  border-width: 2px;
+}
+
+.mat-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 50rem;
+  padding: 25px;
+  box-shadow: rgba(121, 121, 121, 0.09) 0px 12px 12px, rgba(119, 119, 119, 0.09) 0px -12px 30px, rgba(121, 121, 121, 0.06) 0px 4px 6px, rgba(119, 119, 119, 0.06) 0px 12px 13px, rgba(121, 121, 121, 0.06) 0px -3px 5px;
+}
+
+
+.mat-grid-tile{
+  background-color: whitesmoke;
+}
+
+#center{
+  display: flex;
+  justify-content: center;
+  border-bottom: 0px;
+}
+
+#all{
+  display: flex;
+  justify-content: right;
+}
+
+#id{
+  display: flex;
+  justify-content: right;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-card-title{
+  font-weight: bold;
+  font-size: 20px;
+  position: center;
+}

@@ -1,0 +1,184 @@
+<pre>
+
+</pre>
+
+<mat-card>
+<div class="container-fluid" >
+    <div class="row justify-content-center">
+          <div class="row">
+            <div class="col" id="center">
+                <mat-card-title>  Dettagli paziente:  {{paziente?.dettagli?.id_paziente}}</mat-card-title>
+            </div>
+          </div>
+
+        <div class="row" id="cerca">
+         
+            <mat-form-field class="example-full-width" appearance="fill" >
+             <mat-label>Ricerca</mat-label> 
+                <input type="text"  value={{paziente?.dettagli?.id_paziente}} placeholder="Pick one" aria-label="Number" [(ngModel)]="searchText" matInput [matAutocomplete]="auto"/>
+                <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of listaPazienti | filter2: searchText  async" [value]="option">
+                    <button (click)="getDettaglio(option)" id="bottonePaziente" mat-button>{{option}}</button>
+                </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        
+        </div>
+       
+    </div>
+
+    <br><br>
+    <div class="row">   
+        <div class="col" style="max-width: 240px;"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="text1"> Codice paziente:</span> 
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{paziente?.dettagli?.id_paziente}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="text1">Sesso:</span>
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{paziente?.dettagli?.sesso}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="text1">Menopausa:</span>
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{menopausa}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ">
+                        <span class="text1">Altezza:</span>
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{paziente?.dettagli?.altezza}}Cm</span>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="text1">Peso:</span>
+                    </div>
+                    <div class="col text-end" >
+                        <span class="text2">{{paziente?.dettagli?.peso}}kg</span>
+                    </div>
+       
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="text1">Dieta:</span>
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{paziente?.dettagli?.dieta}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="text1">Età:</span>
+                    </div>
+                    <div class="col text-end">
+                        <span class="text2">{{paziente?.dettagli?.eta}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col" style="min-width: 400px;">  
+                <div class="row" style="padding-right:0px;"> 
+                    <div class="col-12">
+                        <span class="text1">Intolleranze:</span>
+                    </div>
+                    <div class="row" style="padding-right:0px;">
+                        <p class="text-break text2">{{paziente?.dettagli?.intolleranze}}</p>
+                    </div>
+                </div>
+                <div class="row"  style="padding-right:0px;">
+                    <div class="col">
+                        <span class="text1">Patologie:</span>
+                    </div>
+                    <div class="row" style="padding-right:0px;">
+                     <div class="col" style="padding-right:0px;">
+                        <p class="text-break text2" >{{paziente?.dettagli?.patologie}}</p></div>                
+                    </div>
+                </div>
+                <div class="row" style="padding-right:0px;">
+                    <div class="col" style="padding-right:0px;">
+                        <span class="text1">Allergie:</span>
+                    </div>
+                    <div class="row"style="padding-right:0px;" >
+                        <p class="text-break text2" >{{paziente?.dettagli?.allergie}}</p>
+                    </div>
+                </div>  
+            
+        </div>
+    </div>
+
+<br>
+
+<div class="row">
+    <div class="col" id="center">   <mat-card-title>Storico misurazioni</mat-card-title> </div>
+</div>
+
+<div class="row">
+    <div class="col" style="max-width: 250px;" > 
+        
+               
+            <div class="col " style="height: 357px;" >
+                <app-month-picker  (newItemEvent)="monthSelected($event)" ></app-month-picker>
+        
+                    <table class="table table-sm" style="max-width: 200px;" >
+
+                        <tbody >
+                            <tr *ngFor="let misurazione of listMisurazioniConData | paginate:{ id: 'misuraizone',itemsPerPage: 5, currentPage: d}">
+                                <td> <p class="ex1"> <span class="text1"> {{misurazione.data_misurazione}} </span></p></td>
+                                <td> <button (click)="openDialogVisualizzaDieta(misurazione,listMisurazioniConData)" id="bottoneMisurazioni" mat-button color="primary">Vedi</button> </td>  
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+                <div class="col " id="center"> 
+                    <pagination-controls style="height: 26px;" (pageChange)="d = $event" id="misuraizone" nextLabel=">" previousLabel="<"  [maxSize]="3" [autoHide]="true"  [directionLinks]="true" ></pagination-controls>
+                </div> 
+        </div>
+        
+        
+        <div class="col" > 
+            <div class="mat-grafico">
+                <div class="container"> 
+                    <app-grafici></app-grafici>   
+                </div>  
+            </div>  
+        </div>
+    </div>
+<!--
+    <div class="row" style="margin-top:10px;">
+        <div class="col" id="center">
+            <mat-card-actions>
+                <button id="bottoneAggiungiPaziente" mat-button style="font-weight: bold;" (click)="openBottomSheet()">Aggiungi
+                    paziente
+                </button>
+            </mat-card-actions>
+            
+        </div>
+        <div class="col" id="center">
+            <mat-card-actions>
+                <button id="bottoneModifica" [disabled]="disableModificaButton" (click)="modificaUtente()" mat-button
+                    style="font-weight: bold;">Modifica info paziente</button>
+            </mat-card-actions>
+        </div>
+    </div>
+-->
+</div>
+
+</mat-card>
+    

@@ -1,0 +1,51 @@
+a {
+  width: 100%;
+}
+
+.mat-list-item{
+  color:rgba(255, 255, 255, 0.616);
+}
+
+.docs-component-viewer-sidenav-item-selected{
+  background: rgba(0, 0, 0, 0.178) !important;
+  color: aliceblue;
+  border-right-width:3px;
+  border-right-color: aliceblue;
+  border-right-style: solid;
+}
+
+#bottoneLogout {
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: bold;
+  opacity: 0.8;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .text{
+      display:none !important;
+  }
+  .icon{
+      display:block !important;
+  }
+
+  .sidenav{
+    width: 90px !important;
+  }
+
+  #bottoneLogout{
+
+    width: 70px !important;
+  
+  }
+
+}
+
+/* media query for large devices */
+
+

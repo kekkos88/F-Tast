@@ -1,0 +1,185 @@
+<pre>
+
+</pre>
+<div class="container">
+
+            <mat-card>
+                <div class="container">
+                <div class="row">
+                    <div class="col-12" style="display: flex; justify-content: center;">
+                        <mat-card-title> Misurazioneaziente : {{id_paziente}}</mat-card-title>
+                    </div>
+                        <div class="col-12" style="display: flex; justify-content: center; text-align: line;">
+                            <div class="col-5">
+                            <h2 style="color:chartreuse; margin: 0 0 0 0;"> NUOVA </h2>
+                    
+                            <h4> Data misurazione : {{currentDatePagina}} </h4>
+                        </div>
+                    </div>
+                </div>
+                <pre>
+                </pre>
+              
+                    <form [formGroup]="aggiungiMisurazioneForm" ><!-- ho cancella da questo riga (ngSubmit)="callingFunction()" mi dava problemi con la funzione , veniva richiamta 2 volte-->
+                        <div class="row " style="align-items: flex-end;" >
+                            <div class="col-2 col-sm-2" >
+                                <div class="col" style="text-align: center;">
+                                    <h4>Peso (Kg)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        
+                                        <input (keydown)="_keyUp($event)" formControlName="peso" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                            
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;">
+                                    <h4>Menopausa</h4>
+                                </div>
+
+                                <div class="col">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-select formControlName="menopausa" matInput aria-label="Menopausa">
+                                            <mat-option value="1">Si</mat-option>
+                                            <mat-option value="0">No</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Percentuale massa grassa</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">                                 
+                                        <input (keydown)="_keyUp($event)" formControlName="massaGrassa" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                                         
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Percentuale massa magra</h4>
+                                </div>
+                                <div class="example">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="massaMagra" matInput placeholder="...">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                       
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Percentuale idratazione</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">   
+                                        <input (keydown)="_keyUp($event)" formControlName="idratazione" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                        
+                       
+                            <div class="col-2 col-sm-2">
+                               <div class="col" style="text-align: center;"> 
+                                    <h4>Altezza (Cm)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">                                       
+                                        <input (keydown)="_keyUp($event)" formControlName="altezza" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                            
+                        </div> 
+                        <div class="row" style="align-items: flex-end;" >
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Diametro vita (Cm)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="diametroVita" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Diametro fianchi (Cm)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="diametroFianchi" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Bmi</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="bmi" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                       
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Colesterolo DHL</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        
+                                        <input (keydown)="_keyUp($event)" formControlName="colesteroloDHL" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                       
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Trigliceridi (mg/dL)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                    
+                                        <input (keydown)="_keyUp($event)" formControlName="trigliceridi" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                        
+                            <div class="col-2 col-sm-2">.
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Glucosio (mg/dL)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="glucosio" matInput placeholder="...">
+                                    </mat-form-field>
+                             
+                            
+                              
+                            </div>
+                        </div>
+                        <div class="row" style="align-items: flex-end;" >
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4 >Pressione in sistole (mm/Hg)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="sistole" matInput placeholder="...">
+                                    </mat-form-field>
+                            </div>
+                       
+                            <div class="col-2 col-sm-2">
+                                <div class="col" style="text-align: center;"> 
+                                    <h4>Pressione in diastole (mm/Hg)</h4>
+                                </div>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input (keydown)="_keyUp($event)" formControlName="diastole" matInput placeholder="...">
+                                    </mat-form-field>                      
+                            </div>
+                        </div>
+                        <pre>
+
+                        </pre>
+                        <div class="col-12 d-flex justify-content-center" >
+                            <button mat-raised-button [disabled]="!aggiungiMisurazioneForm.dirty"
+                            (click)="callingFunction()">Salva misurazione</button>
+                        </div>
+                    
+                </form>
+           </div>
+            </mat-card>
+        </div>
+
+<pre>
+
+  
+
+
+</pre>

@@ -1,0 +1,110 @@
+.bottone-success {
+    border-radius: 30px; 
+    border-style: solid;
+    border-width: 2px;
+    color: rgba(8, 99, 189, 1);
+    border-color: rgb(255, 76, 5);
+    display: flex;
+    justify-content: center;
+    background:white;
+}
+
+#bottone-success {
+    border-radius: 30px; 
+    border-style: solid;
+    border-width: 2px;
+    color: rgba(8, 99, 189, 1);
+    border-color: rgba(8, 99, 189, 1);
+    display: flex;
+    justify-content: center;
+    background:white;
+}
+
+/* modifico il css di sweetaler bottoni e popup*/
+/*inizio*/
+::ng-deep .swal2-styled.swal2-confirm  {
+    border-radius: 30px; 
+    border-style: solid;
+    border-width: 2px;
+    color: rgba(8, 99, 189, 1);
+    border-color: rgba(8, 99, 189, 1);
+    background:white;
+    display: flex;
+}
+
+::ng-deep .swal2-styled.swal2-confirm:focus {
+    box-shadow: none;
+  }
+
+  ::ng-deep .swal2-styled.swal2-cancel {
+    border-radius: 30px; 
+    border-style: solid;
+    border-width: 2px;
+    color: rgba(8, 99, 189, 1);
+    border-color: rgba(8, 99, 189, 1);
+    background:white;
+    display: flex;
+    justify-content:center
+  }
+
+  ::ng-deep .swal2-popup{
+    border-radius: 51px;
+  }
+    ::ng-deep .swal2-actions{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+  /*fine*/
+
+  /* modifico css del menu a tendina dei campi(ricerca e sesso) di inserimento*/
+  /*inizio*/
+  ::ng-deep .ngx-pagination .disabled {
+    padding-left: 0  !important;
+  }
+  
+  ::ng-deep .mat-autocomplete-panel{
+    border-bottom-right-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+  }
+  
+  ::ng-deep .mat-select-panel:not([class*=mat-elevation-z]){
+  
+    border-radius: 16px !important;
+  }
+  /* fine*/
+
+  /* modifico css dei campi di inserimento*/
+  /*inizio*/ 
+  
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 16px !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border: none !important;
+  }
+  
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+  
+  /*fine*/
+
+  ::ng-deep .mat-card-title{
+    font-weight: bold;
+    font-size: 20px;
+    position: center;
+  }
+
+  ::ng-deep .text1{
+    font-weight: bold ; 
+    font-size: 16px;
+  }
+
+  ::ng-deep .text2{
+    font-size: 16px;
+  }
+  ::ng-deep .text3{
+    font-weight: bold ; 
+    font-size: 16px;
+  }

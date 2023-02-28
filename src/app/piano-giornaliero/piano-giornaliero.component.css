@@ -1,0 +1,43 @@
+.row{
+  max-width: 100%;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+h1{
+
+  background: linear-gradient(272.69deg, #00D1FF 0%, #00B83E 124.45%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+
+}
+
+#nome_pasto{
+  max-width: 130px;
+}
+
+
+#quantita{
+  max-height: 50px;
+}
+
+.container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+button{
+  display: flex;
+  justify-content: right;
+  color: rgb(238, 238, 238);
+  background: linear-gradient(272.69deg, #00D1FF -59.92%, #00B83E 86.39%);
+  border-radius: 30px;
+}

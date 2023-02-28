@@ -1,0 +1,31 @@
+.container {
+  max-width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0%;
+}
+
+.sidenav-content {
+  display: flex;
+  
+  height: 100%;
+  align-items: top;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+.sidenav {
+  margin: 0px;
+  padding: 0px;
+  width: 15%;
+  
+  max-width: 250px;;
+  height: 100%;
+  background: linear-gradient(180deg, #0F9BEA -52.86%, #44C041 54.18%);
+}
+
+@media (max-width: 1000px) {
+  .sidenav{
+    width: 96px !important;
+  }
+}
