@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { tap } from "rxjs/operators";
+import { catchError, tap } from "rxjs/operators";
 import {
   HttpRequest,
   HttpHandler,
@@ -9,7 +9,8 @@ import {
   HttpErrorResponse,
   HttpHeaders
 } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { AlertService } from "./alert.service";
 
 @Injectable()
 export class TokenService implements HttpInterceptor {
@@ -18,14 +19,15 @@ export class TokenService implements HttpInterceptor {
   refreshToken!: string|null;
   localStorage: Storage;
 
-  constructor() { 
+  constructor( private alert :AlertService) { 
     this.localStorage = window.localStorage;
     this.setAccessTokenTokenFromStorage();
     this.setRefreshTokenTokenFromStorage();
+   // this.accessToken = ( localStorage.getItem('access_token'));
   }
 
   async setAccessTokenTokenFromStorage(){
-    this.accessToken = (await localStorage.getItem('access_token'));
+    const token = await (this.accessToken = (localStorage.getItem('access_token')));
   }
 
   getAccessToken(){
@@ -33,7 +35,7 @@ export class TokenService implements HttpInterceptor {
   }
 
   async setRefreshTokenTokenFromStorage(){
-    this.refreshToken = (await localStorage.getItem('refresh_token'));
+    const token= await (this.refreshToken = await localStorage.getItem('refresh_token'));
   }
 
   getNewAccessToken() {
@@ -41,23 +43,26 @@ export class TokenService implements HttpInterceptor {
     //TODO
   }
 
-  async appendAccessToken(headers: HttpHeaders){
-    await this.setAccessTokenTokenFromStorage();
+ /*async appendAccessToken(headers: HttpHeaders){
+   await this.setAccessTokenTokenFromStorage();
     headers = headers.append('Authorization', 'Bearer ' + this.accessToken);
     return headers;
-  }
+  }*/
 
+  /*
   async appendRefreshToken(headers: HttpHeaders){
     await this.setRefreshTokenTokenFromStorage();
     headers = headers.append('Authorization', 'Bearer ' + this.refreshToken);
     return headers;
-  }
+  }*/
 
+  /*
   requestNewAccessToken(){
     let newAccessToken = '';
     this.accessToken = newAccessToken;
   }
-
+  */
+ 
   //function which will be called for all http calls
   intercept(
     request: HttpRequest<any>,
@@ -65,14 +70,14 @@ export class TokenService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
 
     let updatedRequest = request.clone({
-      headers: request.headers.set("Authorization", "Bearer " + localStorage.getItem('access_token'))
+      headers: request.headers.set("Authorization", "Bearer " + this.accessToken)
     });
     
     if (!this.accessToken) {
-      // aggiungo il token di autorizzazione alla richiesta
+      this.setAccessTokenTokenFromStorage();
       console.error('Il token di autorizzazione non è presente nella richiesta-> '+this.accessToken);
       updatedRequest = updatedRequest.clone({
-      headers: request.headers.set("Authorization", "Bearer " + localStorage.getItem('access_token'))
+      headers: request.headers.set("Authorization", "Bearer " + localStorage.getItem('refresh_token'))
       });
     } 
 
@@ -83,23 +88,36 @@ export class TokenService implements HttpInterceptor {
     });*/
     //logging the updated Parameters to browser's console
     //console.log("Before making api call : ", updatedRequest);
-    return next.handle(updatedRequest).pipe(
+   /* return next.handle(updatedRequest).pipe(
       tap(
         event => {
           //logging the http response to browser's console in case of a success
           if (event instanceof HttpResponse) {
-            //console.log("api call success :", event);
+          //console.log("api call success :", event);
           }
         },
         error => {
           //logging the http response to browser's console in case of a failuer
           if (event instanceof HttpErrorResponse) {
-            //console.log("api call error :", event);
+          //console.log("api call error :", event);
           }
         }
-      )
+      ),
     );
-  }
+  }*/
+
+    return next.handle(updatedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401 || error.status === 403) {
+          this.alert.avvisoOk("Si prega di rifare il login, token scaduto!");
+
+          console.log("Errore 401 o 403: ", error.message);
+        }
+        return throwError(error);
+      })
+    );
+}
+
 }
 
 /*TODO service di controllo e utilizzo del' access token e refresh token.

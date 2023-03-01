@@ -55,9 +55,8 @@ export class NavBarChangeService {
        this.localStorage.setItem('mostraNavBar','false');
     }else{
           if( this.localStorage.getItem('mostraNavBar')== 'true'){
-            this.attivaNavBar();
+              this.attivaNavBar();
           }
-
     }
 
   }

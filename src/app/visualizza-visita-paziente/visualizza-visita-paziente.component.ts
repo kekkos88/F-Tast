@@ -20,9 +20,9 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
 
   res_rete_neurale!: number;
 
-   misurazioneSelezionata: number = 0;
+  misurazioneSelezionata: number = 0;
   
-   nomeChart :string ="";
+  nomeChart :string ="";
 
   constructor(public dialogRef: MatDialogRef<VisualizzaVisitaPazienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private pazientiService: PazientiService, private shared: SharingService) { }
@@ -36,6 +36,8 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
     if(!JSON.stringify(this.data).includes("null")){
       this.disabilitaPulsanteRete = false;
     }
+    this.data.misurazione.sesso=this.shared.paziente.dettagli.sesso;
+    this.data.misurazione.eta=  Number(this.paziente.dettagli.eta);
 
    this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni);
    console.log(this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni));
@@ -49,7 +51,6 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
       this.res_rete_neurale = data.prediction * 100;
     })
   }
-
 
   onClickOk(): void {
     this.dialogRef.close();
@@ -77,6 +78,5 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
       this.menopausa = "No";
     }
   }
-
 
 }
