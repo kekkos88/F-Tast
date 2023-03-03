@@ -36,7 +36,7 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
     if(!JSON.stringify(this.data).includes("null")){
       this.disabilitaPulsanteRete = false;
     }
-    this.data.misurazione.sesso=this.shared.paziente.dettagli.sesso;
+    this.data.misurazione.sesso= this.shared.paziente.dettagli.sesso;
     this.data.misurazione.eta=  Number(this.paziente.dettagli.eta);
 
    this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni);
