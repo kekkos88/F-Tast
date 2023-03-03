@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import {Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Injectable, ViewChild  } from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
@@ -40,6 +40,11 @@ export const MY_FORMATS = {
   ],
 
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class MonthPickerComponent{
   @Output() newItemEvent = new EventEmitter<string>();
 
@@ -64,4 +69,9 @@ export class MonthPickerComponent{
     console.log(value);
     this.newItemEvent.emit(value);
   }
+
+  resetDate() {
+    this.date = new FormControl(moment());
+  }
+
 }

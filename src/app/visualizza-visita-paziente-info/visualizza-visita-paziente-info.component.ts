@@ -38,8 +38,7 @@ export class VisualizzaVisitaPazienteInfoComponent implements OnInit,AfterViewIn
     this.nomeChart=this.misurazione.idmisurazione.toString();
     this.menopausaSetter();
     this.paziente = this.shared.getPaziente();
-    //this.misurazione.eta=  Number(this.paziente.dettagli.eta);
-    //this.misurazione.sesso= this.paziente.dettagli.sesso;
+
     console.log(" sesso : "+this.misurazione.sesso);
   }
 

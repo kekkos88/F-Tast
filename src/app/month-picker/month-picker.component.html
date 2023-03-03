@@ -3,6 +3,7 @@
     <input matInput [matDatepicker]="dp" [formControl]="date">
     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
     <mat-datepicker #dp
+    matStartDate placeholder="Start date"
                     startView="multi-year"
                     (yearSelected)="chosenYearHandler($event)"
                     (monthSelected)="chosenMonthHandler($event, dp)"

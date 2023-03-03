@@ -139,7 +139,7 @@
                     <table class="table table-sm" style="max-width: 200px;" >
 
                         <tbody >
-                            <tr *ngFor="let misurazione of listMisurazioniConData | paginate:{ id: 'misuraizone',itemsPerPage: 5, currentPage: d}">
+                            <tr *ngFor="let misurazione of listMisurazioniConData | paginate:{ id: 'misuraizone',itemsPerPage: 5, currentPage: indicePaginazione}">
                                 <td> <p class="ex1"> <span class="text1"> {{misurazione.data_misurazione}} </span></p></td>
                                 <td> <button (click)="openDialogVisualizzaDieta(misurazione,listMisurazioniConData)" id="bottoneMisurazioni" mat-button color="primary">Vedi</button> </td>  
                             </tr>
@@ -147,7 +147,7 @@
                     </table>
                 </div> 
                 <div class="col " id="center"> 
-                    <pagination-controls style="height: 26px;" (pageChange)="d = $event" id="misuraizone" nextLabel=">" previousLabel="<"  [maxSize]="3" [autoHide]="true"  [directionLinks]="true" ></pagination-controls>
+                    <pagination-controls style="height: 26px;" (pageChange)="indicePaginazione = $event" id="misuraizone" nextLabel=">" previousLabel="<"  [maxSize]="3" [autoHide]="true"  [directionLinks]="true" ></pagination-controls>
                 </div> 
         </div>
         

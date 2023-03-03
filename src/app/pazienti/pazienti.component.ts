@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AggiungiPazienteComponent } from '../aggiungi-paziente/aggiungi-paziente.component';
 import { MisurazionePaziente, Paziente } from '../modelli';
@@ -20,6 +20,7 @@ import * as moment from 'moment';
 import { ScegliDietaComponent } from '../scegli-dieta/scegli-dieta.component';
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { filter } from 'rxjs';
+import { MonthPickerComponent } from '../month-picker/month-picker.component';
 
 
 export const MY_FORMATS = {
@@ -64,17 +65,19 @@ export class FilterPipe {
 
 export class PazientiComponent implements OnInit {
 
+  @ViewChild(MonthPickerComponent) datePickerComponent!: MonthPickerComponent;
+
   date = new FormControl(moment());
   static shared: any;
   static paziente: any;
 
   // variabili necessarie per la paginazione di Elenco e Dettagli paziente
-  d:any;
+  indicePaginazione:any;
 
   // variabile utile per la pipe di ricerca del cliente in base al codice
   searchText :any =""; 
   
-  constructor(private grafico:GraficiComponent, private navBarChange:NavBarChangeService, private dialog: MatDialog, private pazientiService: PazientiService, private shared: SharingService, private _bottomSheet: MatBottomSheet, private router: Router) { }
+  constructor(private grafico:GraficiComponent, private navBarChange:NavBarChangeService, private dialog: MatDialog, private pazientiService: PazientiService, private shared: SharingService, private _bottomSheet: MatBottomSheet, private router: Router, private monthPickerComponent :MonthPickerComponent) { }
 
   listaPazienti: string[] = [];
 
@@ -103,9 +106,11 @@ export class PazientiComponent implements OnInit {
  
 
   getDettaglio(paziente: string) {
-    console.log("sono in get dettagli "+paziente);
+      console.log("sono in get dettagli "+paziente);
+    
+      this.indicePaginazione=0;
  
-    this.pazientiService.getDettaglioPaziente(paziente, localStorage.getItem("id_nutrizionista")!).subscribe((res: any) => {
+      this.pazientiService.getDettaglioPaziente(paziente, localStorage.getItem("id_nutrizionista")!).subscribe((res: any) => {
       console.log(res);
       this.paziente = res;
      
@@ -128,9 +133,14 @@ export class PazientiComponent implements OnInit {
       this.grafico.attivaGrafico();
 
       this.ultimeMisurazioni();
+     
+      //this.monthPickerComponent.resetDate();
+      this.datePickerComponent.resetDate();
+
     })
-    
   }
+
+
 
 ultimeMisurazioni(){
     this.listMisurazioniConData = [];
@@ -161,7 +171,6 @@ ultimeMisurazioni(){
       this.listaPazienti = res.lista_pazienti;
       // inserisco più elementi all interno di listapazienti per fare prove di paginazione
       console.log("list pazienti "+res.lista_pazienti+" "+this.listaPazienti);
-
     })
   }
 
