@@ -38,7 +38,7 @@ export class PazientiService {
     hdl: 0,
     systolic: 0,
     diastolic: 0,
-    gender: "",
+    gender: 0,
     age: 0,
     weight: 0,
     bmi: 0

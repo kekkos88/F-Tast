@@ -1,10 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Chart } from 'chart.js';
 import { DialogData, MisurazionePaziente, Paziente } from '../modelli';
 import { PazientiService } from '../pazienti.service';
 import { SharingService } from '../sharing.service';
-
 
 @Component({
   selector: 'app-visualizza-visita-paziente',
@@ -16,9 +15,9 @@ import { SharingService } from '../sharing.service';
 export class VisualizzaVisitaPazienteComponent implements OnInit {
  
   menopausa: string | undefined;
-  disabilitaPulsanteRete: boolean = true;
+ // disabilitaPulsanteRete: boolean = true;
 
-  res_rete_neurale!: number;
+ 
 
   misurazioneSelezionata: number = 0;
   
@@ -27,30 +26,26 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<VisualizzaVisitaPazienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private pazientiService: PazientiService, private shared: SharingService) { }
 
+   //@ViewChild(VisualizzaVisitaPazienteInfoComponent) visualizzaVisitaPazienteinfo!: VisualizzaVisitaPazienteInfoComponent;
+
+
     paziente: Paziente | undefined;
 
   ngOnInit(): void {
+    
     this.paziente=this.shared.getPaziente();
     console.log(this.data);
+
   // this.menopausaSetter();
-    if(!JSON.stringify(this.data).includes("null")){
+   /* if(!JSON.stringify(this.data).includes("null")){
       this.disabilitaPulsanteRete = false;
     }
-    this.data.misurazione.sesso= this.shared.paziente.dettagli.sesso;
-    this.data.misurazione.eta=  Number(this.paziente.dettagli.eta);
-
-   this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni);
-   console.log(this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni));
-   this.menopausaSetter();
-  }
-
-
-  chiamaReteNeurale(){
-    this.pazientiService.chiamaReteNeurale(this.data.misurazione).subscribe((data: any) => {
-      console.log(data);
-      this.res_rete_neurale = data.prediction * 100;
-    })
-  }
+    */
+    
+    this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni);
+    console.log(this.cercaMisurazione(this.data.misurazione,this.data.ListaMisurazioni));
+    this.menopausaSetter();
+   }
 
   onClickOk(): void {
     this.dialogRef.close();
@@ -71,7 +66,6 @@ export class VisualizzaVisitaPazienteComponent implements OnInit {
   }
 
   menopausaSetter(){
-    
     if(this.data.misurazione.menopausa == 1 ){
       this.menopausa = "Si";
     }else{

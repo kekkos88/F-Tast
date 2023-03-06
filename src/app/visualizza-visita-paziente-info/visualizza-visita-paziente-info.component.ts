@@ -5,6 +5,8 @@ import { trigger } from '@angular/animations';
 import { delay } from 'rxjs';
 import {DatePipe, formatDate} from '@angular/common';
 import { SharingService } from '../sharing.service';
+import { PazientiService } from '../pazienti.service';
+import { VisualizzaVisitaPazienteComponent } from '../visualizza-visita-paziente/visualizza-visita-paziente.component';
 
 @Component({
   selector: 'app-visualizza-visita-paziente-info',
@@ -22,15 +24,15 @@ export class VisualizzaVisitaPazienteInfoComponent implements OnInit,AfterViewIn
  @Input()data!: DialogData;
  @Input()misurazione!: MisurazionePaziente;
 
-
- constructor(public datepipe: DatePipe, private shared: SharingService) {}
+ disabilitaPulsanteRete: boolean = true;
+ constructor(public datepipe: DatePipe, private shared: SharingService,private pazientiService: PazientiService, private visusalizzaPazeinte: VisualizzaVisitaPazienteComponent) {}
 
  public label :string ="";
  menopausa: string | undefined;
  public labels :string[]=[];
  public myChart2!: Chart;
  paziente!: Paziente;
-
+ res_rete_neurale!: number;
  nomeChart :string ="";
 
   ngOnInit(): void {
@@ -38,7 +40,8 @@ export class VisualizzaVisitaPazienteInfoComponent implements OnInit,AfterViewIn
     this.nomeChart=this.misurazione.idmisurazione.toString();
     this.menopausaSetter();
     this.paziente = this.shared.getPaziente();
-
+    this.misurazione.sesso= this.setSesso();
+    this.misurazione.eta=this.setEtaMisurazione();
     console.log(" sesso : "+this.misurazione.sesso);
   }
 
@@ -46,6 +49,22 @@ export class VisualizzaVisitaPazienteInfoComponent implements OnInit,AfterViewIn
     console.log("nome:"+this.misurazione.idmisurazione.toString());
     this.ultimeMisurazioni();
   }
+
+  setSesso(){
+    if(this.paziente?.dettagli.sesso == 'Femmina')
+    {
+      return Number("0");
+    }
+    return Number("1");
+   }
+
+   setEtaMisurazione(){
+    let eta : number;;
+    var splitted =this.data.misurazione.data_misurazione.split("-");
+    eta=Number(splitted[2])-(Number(formatDate(new Date,'yyyy','en-US'))-Number(this.paziente?.dettagli.eta));
+    console.log("eta  " +eta+" split 2 "+splitted[2]+" data oggi "+formatDate(new Date,'yyyy','en-US')+" eta paziente " +this.paziente?.dettagli.eta);
+    return eta;
+   }
 
   menopausaSetter(){
     if(this.misurazione.menopausa == 1 ){
@@ -62,6 +81,17 @@ export class VisualizzaVisitaPazienteInfoComponent implements OnInit,AfterViewIn
     console.log("data "+formatDate(dateToDay,'YYYY-MM-dd','en-US'));
     return formatDate(dateToDay,'yyyy-MM-dd','en-US');
    }
+   
+   chiamaReteNeurale(){
+    this.pazientiService.chiamaReteNeurale(this.misurazione).subscribe((data: any) => {
+      console.log(data);
+      this.res_rete_neurale = data.prediction * 100;
+    })
+  }
+
+  onClickOk(){
+    this.visusalizzaPazeinte.onClickOk();
+  }
 
   ultimeMisurazioni(){ 
 

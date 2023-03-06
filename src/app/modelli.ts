@@ -65,7 +65,7 @@ export interface MisurazionePaziente {
   pressione_sistole: number,
   trigliceridi: number,
   vita: number,
-  sesso: string,
+  sesso: number,
   eta: number,
   massa_magra:number;
   

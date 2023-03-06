@@ -90,4 +90,23 @@
     </div>
 
   </div>
+
+  <br>
+
+  <div class="row align-items-end text-center">
+        
+    <div class="col-3">
+      <span> Probabilità riscontro diabete: </span> <span style="font-weight: bold;" > {{res_rete_neurale}} </span> <span>%</span>
+    </div>
+
+    <div class="col-3">
+      <button mat-raised-button (click)="chiamaReteNeurale()" >Rete neurale <mat-icon>psychology</mat-icon></button>
+    </div>
+
+    <div class="col-3">
+      <button mat-button (click)="onClickOk()" cdkFocusInitial>Chiudi</button>
+    </div>
+
+  </div>
+
 </div>

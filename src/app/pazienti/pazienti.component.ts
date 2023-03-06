@@ -22,7 +22,7 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 import { filter } from 'rxjs';
 import { MonthPickerComponent } from '../month-picker/month-picker.component';
 
-
+/*
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
@@ -34,7 +34,7 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
+*/
 
 @Pipe({name:'filter2'}) 
 export class FilterPipe {
@@ -51,15 +51,16 @@ export class FilterPipe {
   selector: 'app-pazienti',
   templateUrl: './pazienti.component.html',
   styleUrls: ['./pazienti.component.css'],
+  
   //encapsulation: ViewEncapsulation.None,
-  providers: [{
-    provide: DateAdapter,
+ /* providers: [{
+   /* provide: DateAdapter,
     useClass: MomentDateAdapter,
     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    
-  },
+    */
+ /* },
   
-  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },]
+//  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },]*/
   
 })
 
